@@ -1,5 +1,5 @@
 import pytest
-from project import calculate_bmi, weight_status, get_height, get_weight, system_of_units
+from bmi_calculator import calculate_bmi, weight_status, get_height, get_weight, system_of_units
 
 
 def mock_get_weight_kg(system_units):
@@ -59,26 +59,26 @@ def test_get_weight(monkeypatch):
 
 def test_calculate_bmi(monkeypatch):
     # Mock the metric return values of get_weight and get_height
-    monkeypatch.setattr('project.get_weight', mock_get_weight_kg)
-    monkeypatch.setattr('project.get_height', mock_get_height_meters)
+    monkeypatch.setattr('bmi_calculator.get_weight', mock_get_weight_kg)
+    monkeypatch.setattr('bmi_calculator.get_height', mock_get_height_meters)
     system_units = 'metric'
     assert round(calculate_bmi(system_units), 2) == 23.87
 
     # Mock the imperial return values of get_weight and get_height
-    monkeypatch.setattr('project.get_weight', mock_get_weight_lbs)
-    monkeypatch.setattr('project.get_height', mock_get_height_inches)
+    monkeypatch.setattr('bmi_calculator.get_weight', mock_get_weight_lbs)
+    monkeypatch.setattr('bmi_calculator.get_height', mock_get_height_inches)
     system_units = 'imperial'
     assert round(calculate_bmi(system_units), 2) == 24.96
 
 def test_weight_status(monkeypatch):
     # Mock the metric return values of get_weight and get_height
-    monkeypatch.setattr('project.get_weight', mock_get_weight_kg)
-    monkeypatch.setattr('project.get_height', mock_get_height_meters)
+    monkeypatch.setattr('bmi_calculator.get_weight', mock_get_weight_kg)
+    monkeypatch.setattr('bmi_calculator.get_height', mock_get_height_meters)
     system_units = 'metric'
     assert weight_status(system_units) == (23.87, 'healthy 😍')
 
     # Mock the imperial return values of get_weight and get_height
-    monkeypatch.setattr('project.get_weight', mock_get_weight_lbs)
-    monkeypatch.setattr('project.get_height', mock_get_height_inches)
+    monkeypatch.setattr('bmi_calculator.get_weight', mock_get_weight_lbs)
+    monkeypatch.setattr('bmi_calculator.get_height', mock_get_height_inches)
     system_units = 'imperial'
     assert weight_status(system_units) == (24.96, 'obese 😭')
