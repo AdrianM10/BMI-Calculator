@@ -8,7 +8,7 @@ Once the BMI has been calculated another function is called and the return value
 
 # Usage
 
-1. Run the python program by executing 'python project.py' in your terminal.
+1. Run the python program by executing 'python bmi_calculator.py' in your terminal.
 2. Enter your name when prompted.
 3. Choose the system of units you would like to use (metric or imperial).
 4. Enter your weight.
